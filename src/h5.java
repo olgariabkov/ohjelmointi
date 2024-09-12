@@ -5,20 +5,22 @@ public class h5 {
         Scanner lukija = new Scanner(System.in);
 
         // metodi laskeNegatiivisetluvut
-        int negatiivisetluvut = laskeNegatiivisetluvut(lukija);
-        int parillisetluvut = laskeParillisetluvut(lukija);
+        int[] tulokset = laskeNegatiivisetJaParillisetluvut(lukija);
+        //int negatiivisetluvut = laskeNegatiivisetluvut(lukija);
+        //int parillisetluvut = laskeParillisetluvut(lukija);
 
         // Tulostetaan negatiiviset luvut
-        System.out.println("Negatiiviset luvut: " + negatiivisetluvut);
-        System.out.println("Parillisetluvut: " + parillisetluvut);
+        System.out.println("Negatiiviset luvut: " + tulokset[0]);
+        System.out.println("Parillisetluvut: " + tulokset[1]);
 
         lukija.close();
 
     }
 
     // Metodi laskee negatiiviset luvut
-    public static int laskeNegatiivisetluvut(Scanner lukija) {
+    public static int[] laskeNegatiivisetJaParillisetluvut(Scanner lukija) {
         int negatiivisetluvut = 0;
+        int parillisetluvut = 0;
         int luku;
 
         System.out.print("Syötä kokonaisluku (0 lopettaa): ");
@@ -33,30 +35,13 @@ public class h5 {
             if (luku < 0) {
                 negatiivisetluvut++; //Lisätään negatiivisten luvut
             }
+        if (luku % 2 == 0) {
+        parillisetluvut++;
+        }
         }
 
-        return negatiivisetluvut;
 
-    }
-    //Metodi parilliset luvut
-    public static int laskeParillisetluvut(Scanner lukija) {
-        int parillisetluvut = 0;
-        int luku;
-
-        System.out.print("Syötä kokonaisluku (0 lopettaa): ");
-        while (true) {
-            System.out.print("Luku: ");
-            luku = lukija.nextInt();
-
-            if (luku == 0) {
-                break;
-            }
-
-            if (luku % 2 == 0) {
-                parillisetluvut++;
-            }
-        }
-        return parillisetluvut;
+        return new int[]{negatiivisetluvut, parillisetluvut};
 
     }
 }
