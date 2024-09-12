@@ -8,49 +8,54 @@ public class h7 {
         System.out.print("Syötä maksimiarvo: ");
         int maksimiarvo = lukija.nextInt();
 
-        //Lasketaan määrä, summa ja neliöiden summa
-        int termienMaara = lasketermienMaara(maksimiarvo);
-        int termienSumma = lasketermienSumma(maksimiarvo);
-        int termienNeliosumma = lasketermienNelioSumma(maksimiarvo);
+        //tarkistetaan onko syöte negatiivinen
+        if (maksimiarvo < 0) {
+            System.out.println("Jonossa termit: ");
+            System.out.println("Termien määrä: 0");
+            System.out.println("Termien summa: 0");
+            System.out.println("Termien neliösumma: ");
 
-        //Tulostetaan jonon termit
-        tulostaJononTermit(maksimiarvo);
+        } else {
 
-        //Tulostetaan tulokset
-        System.out.println("Termien määrä: " + termienMaara);
-        System.out.println("Termien summa: " + termienSumma);
-        System.out.println("Termien neliosumma: " + termienNeliosumma);
+            //Lasketaan määrä, summa ja neliöiden summa
+            int termienMaara = maksimiarvo / 3;
+            //int termienSumma = lasketermienSumma(maksimiarvo);
+            //int termienNeliosumma = lasketermienNelioSumma(maksimiarvo);
+
+            //Tulostetaan jonon termit
+            tulostaJononTermit(maksimiarvo);
+
+            //Tulostetaan tulokset
+            System.out.println("Termien määrä: " + termienMaara);
+            System.out.println("Termien summa: " + lasketermienSumma(maksimiarvo));
+            System.out.println("Termien neliosumma: " + lasketermienNelioSumma(maksimiarvo));
+        }
 
         lukija.close();
     }
     //Laskee termien maara
-    public static int lasketermienMaara(int maksimiarvo) {
+    public static int lasketermienSumma(int maksimiarvo) {
         int termienMaara = maksimiarvo / 3; //jakamalla 3 saadaan termien määrä
-        return termienMaara;
+        int viimeinenTermi = termienMaara * 3;
+        return (termienMaara * (3 + viimeinenTermi)) / 2;
     }
     //laskee summan
-    public static int lasketermienSumma(int maksimiarvo) {
-        int termienMaara = lasketermienMaara(maksimiarvo);
-        int viimeinenTermi = termienMaara * 3; //viimeinen termi on 3 * määrä
-        int termienSumma = (termienMaara * (3 + viimeinenTermi)) / 2; // AP-sarjan summakaava: n/2 * (a + 1)
-        return termienSumma;
+    public static int lasketermienNelioSumma(int maksimiarvo) {
+        int termienNeliosumma = 0;
+        for (int i = 1; i <= maksimiarvo / 3; i++) {
+            int termi = 3 * i;
+            termienNeliosumma += termi * termi;
+        }
+
+        return termienNeliosumma;
 
     }
-    //laskee termien neliöiden summan
-    public static int lasketermienNelioSumma(int maksimiarvo) {
-        int termienMaara = lasketermienMaara(maksimiarvo);
-        int termienNeliosumma = 0;
-        for (int i = 1; i <= termienMaara; i++) {
-            int termi = 3 * i;
-            termienNeliosumma += termi * termi; //neliön summa
-        }
-        return termienNeliosumma;
-        }
+
 
         //tulostaa jonon termit
     public static void tulostaJononTermit(int maksimiarvo) {
         System.out.println("Jonossa termit: ");
-        for (int i = 3; i < maksimiarvo; i += 3) {
+        for (int i = 3; i <= maksimiarvo; i += 3) {
             System.out.print(i + " ");
         }
     }
