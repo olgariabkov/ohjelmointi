@@ -1,2 +1,7 @@
-package PACKAGE_NAME;public class harjoitus2 {
+public class harjoitus2 {
+    public static void main(String[] args) {
+
+
+    }
 }
+
