@@ -8,7 +8,7 @@ public class h8 {
 
         int pelaajaVoitot = 0;
         int tietokoneVoitot = 0;
-        boolean pelikaynnissa = true;
+
 
         System.out.println("Tervetuloa pelaamaan. Syötä kivi, paperi tai sakset. Lopeta l ");
 
@@ -20,7 +20,6 @@ public class h8 {
             //Tarkistetaan, haluaako käyttäjä lopettaa pelin
             if (pelaajaValinta.equals("l")) {
                 System.out.println("Peli lopetettiin ");
-                pelikaynnissa = false;
                 break;
             }
 
@@ -54,11 +53,8 @@ public class h8 {
         }
 
         //Tulostetaan lopputulos
-        if (pelaajaVoitot == 3) {
-            System.out.println("Voitit ");
-        } else if (tietokoneVoitot == 3) {
-            System.out.println("Tietokone voitti ");
-        }
+        if (pelaajaVoitot == 3) System.out.println("Voitit ");
+        else if (tietokoneVoitot == 3) System.out.println("Tietokone voitti ");
 
         System.out.println("Sinä: " + pelaajaVoitot + " - " + "tietokone: " + tietokoneVoitot);
         lukija.close();
